@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import annotations.Cacheable;
 import model.Todo;
 import repo.Repository;
 
@@ -24,6 +25,7 @@ public class TodoRepo implements Repository<Integer,Todo>{
 	}
 
 	@Override
+	@Cacheable
 	public Optional<Todo> findOne(String title) {
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement statement = connection.prepareStatement("select title,status from Todos where title=?")) {
@@ -44,6 +46,7 @@ public class TodoRepo implements Repository<Integer,Todo>{
 	}
 
 	@Override
+	@Cacheable
 	public Iterable<Todo> findAll() {
 		List<Todo> todos = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(url, username, password);
@@ -89,6 +92,7 @@ public class TodoRepo implements Repository<Integer,Todo>{
 	}
 
 	@Override
+	@Cacheable
 	public Optional<Todo> update(Todo entity) {
 		if (entity == null) {
             throw new IllegalArgumentException("entity must not be null");

@@ -29,7 +29,10 @@ public class Todo extends BaseEntity<Integer> {
 
 	@Override
 	public String toString() {
-		return "Todo [title=" + title + ", status=" + status + "]";
+		if(status) {
+			return "Todo [title=" + title + ", status=" + "done" + "]";
+		}
+		return "Todo [title=" + title + ", status=" + "to do" + "]";
 	}
 	
 	

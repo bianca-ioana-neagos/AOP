@@ -3,6 +3,7 @@ package ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
@@ -65,9 +66,14 @@ public class Console {
 	}
 
 	private void findAll() {
-	    Set<Todo> movies=ctrl.findAll();
-	    movies.stream().forEach(System.out::println);
-		
+	    Set<Todo> todos=ctrl.findAll();
+	    System.out.println("Your tasks are: ");
+	    Set<String> td = new HashSet<>();
+	    for(Todo t : todos) {
+	    	td.add(t.getTitle());
+	    }
+	    td.stream().forEach(System.out::println);
+	    System.out.println();
 	}
 
 	private void findOne() throws IOException {
@@ -75,6 +81,7 @@ public class Console {
 		String title = bufferRead.readLine();
 		Optional<Todo> todo =ctrl.findOne(title);
 		System.out.println(todo.toString());	
+		System.out.println();
 	}
 
 	private void update() {
@@ -96,6 +103,7 @@ public class Console {
 	        catch (IOException e){
 	            System.out.println("Invalid input");
 	        }	
+	        System.out.println();
 	}
 
 	private void save() {
@@ -117,6 +125,6 @@ public class Console {
 	        catch (IOException e){
 	            System.out.println("Invalid input");
 	        }
-		
+	        System.out.println();
 	}
 }
