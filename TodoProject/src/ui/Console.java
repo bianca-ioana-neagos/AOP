@@ -57,7 +57,6 @@ public class Console {
                 }
             }while(!cmdM.equals("0"));
         exit();
-        
     }
 
 	private void exit() {
