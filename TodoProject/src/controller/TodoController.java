@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import annotations.Notify;
 import model.Todo;
 import repo.Repository;
 
@@ -15,10 +16,12 @@ public class TodoController {
 		this.repo = repo;
 	}
 	
+	@Notify
 	public void save(Todo todo) {
 	        repo.save(todo);   
 	}
 	
+	@Notify
 	public void  update(Todo todo){
         repo.update(todo);
     }

@@ -1,6 +1,7 @@
 package repo;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import annotations.Cacheable;
+import annotations.Notify;
 import model.Todo;
 import repo.Repository;
 
